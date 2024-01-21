@@ -6,7 +6,7 @@ using UnityEditor;
 
 /// <summary>
 /// 功能：为.fbx中的动画片段，基于每一帧检查人形角色的左右脚是否触地的原理自动生成权重0~1的动画曲线
-///      用于左右脚IK权重的控制中，省去手动K帧的麻烦
+///      用于左右脚IK权重的控制中，省去手动K帧的麻烦。暂不支持.anim的动画
 ///
 /// 使用方法：点击上方菜单 Tools -> Auto Generate FootIKCurve 打开面板
 ///         选中Scene中的带有Animator组件的人形角色
@@ -15,7 +15,7 @@ using UnityEditor;
 /// 
 /// No Copyright
 /// 我使用的Unity版本:2022.3.10f1 其他版本理论可行，未经测试，不依赖任何插件
-/// 这份代码来自我的文章：*文章暂未发布*
+/// 这份代码来自我的文章：https://zhuanlan.zhihu.com/p/679049613
 /// 如果发现什么bug欢迎在知乎上滴滴我，记得点个赞噢~
 ///
 /// 参考链接：
@@ -88,6 +88,7 @@ public class AutoGenerateFootIKCurve : EditorWindow
             EditorGUILayout.HelpBox("请选择Scene上要播放人形动画的GameObject", MessageType.Info);
             EditorGUILayout.HelpBox("GameObject应该具备人形骨骼，拥有Animator组件，\n组件拥有AnimatorController资产", MessageType.Info);
             EditorGUILayout.HelpBox("将要自动计算曲线的动画Clip都放到AnimatorController中", MessageType.Info);
+            EditorGUILayout.HelpBox("点击GameObject没反应的话先点击其他物体再重新点回去试试", MessageType.Info);
             return;
         }
         
